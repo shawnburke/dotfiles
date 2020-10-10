@@ -1,15 +1,32 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - clean: ['~']
 
 - link:
+    ~/.profile:
+        force: true 
+        path: profile
+    ~/.bash_profile: 
+        force: true
+        path: bash_profile
+    ~/.bashrc: 
+        force: true
+        path: bashrc
+    ~/.zshrc:
+        force: true
+        path: zshrc
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
+    ~/.gitconfig: gitconfig
+    ~/.shell:
+    
 
 - create:
     - ~/.vim/undo-history
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  

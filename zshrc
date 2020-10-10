@@ -97,3 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.shell/alias.sh
+source ~/.shell/function.sh
+
+if [ -f ~/.zsh_local ]
+then
+    source ~/.zsh_local
+fi
+
