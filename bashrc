@@ -112,10 +112,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source ~/.shell/alias.sh
-source ~/.shell/functions.sh
+cd ~/
+source .shell/all.sh
 
-source ~/dotfiles/tools/init.sh
+
 
 if [ -f ~/.bash_local ]
 then
