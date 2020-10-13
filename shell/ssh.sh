@@ -1,6 +1,7 @@
 eval $(ssh-agent) >/dev/null
 
 if [ -d ~/.ssh ]
-then
-    find ~/.ssh/ -name 'id_rsa*' -not  -name "*.pub" | xargs -I S ssh-add S 2&>/dev/null;
+then 
+   # Get all keys that start with id_ in .ssh dir, add to ssh-add
+   find . -name "id_*" -maxdepth 1 -type f ! -name "*.*"  | xargs -I S ssh-add S >/dev/null;
 fi

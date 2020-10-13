@@ -1,3 +1,4 @@
+
 - defaults:
     link:
       relink: true
@@ -5,6 +6,9 @@
 
 - clean: ['~']
 
+
+
+# general links
 - link:
     ~/.profile:
         force: true 
@@ -15,15 +19,21 @@
     ~/.bashrc: 
         force: true
         path: bashrc
+    ~/.p10k.zsh: 
+        path: p10k.zsh
     ~/.zshrc:
         force: true
         path: zshrc
-    ~/.p10k.zsh: p10k.zsh
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
     ~/.shell:
-    
+
+# OSX specifics
+- link:
+    ~/.p10k.zsh:
+      if: '[[ "$(uname)" = "Darwin" ]]' 
+      path: p10k.zsh.osx
 
 - create:
     - ~/.vim/undo-history
@@ -31,3 +41,16 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   
+
+
+
+# - defaults:
+#     link:
+#       if: # is mac
+# - link:
+#     # all mac links
+# - defaults:
+#     link:
+#       if: # is linux
+# - link:
+#     # all linux links
