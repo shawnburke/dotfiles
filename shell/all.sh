@@ -7,6 +7,7 @@ then
 fi
 
 os=$(uname -s)
+source $DIR/env.sh
 source $DIR/alias.sh
 source $DIR/functions.sh
 source $DIR/ssh.sh

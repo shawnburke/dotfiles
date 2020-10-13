@@ -38,3 +38,13 @@ See more:
 
 * [General linux powerline fonts](https://github.com/powerline/fonts)
 * [VSCode / Windows Terminal](https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup).  Install the fonts then use `Cascadia Code PL` (or mono pl)
+
+# Machine specific files
+
+To specify extra values:
+
+* `.gitconfig_local`
+* `.bash_local`
+* `.zsh_local`
+* `.env_local`
+* `.alias_local`
