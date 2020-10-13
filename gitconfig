@@ -1,3 +1,18 @@
 [user]
     email = shawn@shawnburke.com
     name = Shawn Burke
+
+[branch]
+    autosetuprebase = always
+
+[push]
+    default = current
+
+[rerere]
+    enabled = true
+
+[http "https://gopkg.in"]
+    followRedirects = true
+
+[include]
+    path = ~/.gitconfig_local

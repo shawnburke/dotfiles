@@ -18,10 +18,6 @@ function install_linux {
         zsh \
         direnv autojump \
         vim tmux
-    # install oh-my-zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-
 }
 
 function install_brew {
@@ -67,6 +63,11 @@ Darwin)
     echo "Unknown OS (${os})"
     
 esac
+
+
+ # install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
 
 echo "Init complete, now exit shell and run source ~/dotfiles/install"

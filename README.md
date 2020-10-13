@@ -24,8 +24,10 @@ Idempotent so should be fine to run whenever.
 
 Once the above is set, run the install to set up the system.
 
+** DO NOT SOURCE THIS **
+
 ```
-. dotfiles/install
+dotfiles/install
 ```
 
 And that should set up all the links.  To get everything working, it typically is best to exit the current session and log back in.  A cheat is to just run `zsh`.

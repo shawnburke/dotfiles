@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+if [ $_ == $0 ]
+then
+    # subshell
+    echo "Script is a subshell" 
 set -e
+fi 
 
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
