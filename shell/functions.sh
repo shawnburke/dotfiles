@@ -14,3 +14,12 @@ function init_tools {
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
     . $DIR/../tools/init.sh
 }
+
+
+function zsh_theme {
+
+    export ZSH_THEME=$1
+    src # depends on zsh_reload
+    
+
+}
