@@ -1,9 +1,17 @@
-if ! which sudo < /dev/null
+#! /bin/bash
+
+packages=("git" "python")
+
+
+
+if ! which sudo >/dev/null
 then
-   apt update
    apt install -yq sudo
-else
-   sudo apt update
 fi
 
-sudo apt install -yq sudo git python
+if ! dpkg -s $packages > /dev/null
+then
+   sudo apt update
+   sudo apt install -yq $packages
+fi
+

@@ -11,6 +11,7 @@ function install_apt_package {
 }
 
 function install_linux {
+    source prereqs_linux.sh
     sudo apt-get install -yq \
         curl wget netcat \
         highlight \
