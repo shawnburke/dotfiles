@@ -11,14 +11,18 @@ function install_apt_package {
 }
 
 function install_linux {
-    source prereqs_linux.sh
-    sudo apt-get install -yq \
+    if ! sudo apt-get install -yq \
         curl wget netcat \
         highlight \
         jq \
         zsh \
+        mosh \
         direnv autojump \
         vim tmux
+    then
+        echo "Package install failed, please run apt update then prereqs_linux.sh"
+    fi
+
 }
 
 function install_brew {
@@ -48,6 +52,7 @@ function install_osx {
     install_brew direnv
     install_brew tmux
     install_brew autojump
+    install_brew mosh
 }
 
  

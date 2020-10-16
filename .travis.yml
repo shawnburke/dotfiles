@@ -1,0 +1,8 @@
+language: generic
+
+services:
+  - docker
+
+
+script: 
+  - VOLUME_DIR=$TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR/test.sh
