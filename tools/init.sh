@@ -12,7 +12,7 @@ function install_apt_package {
 
 function install_linux {
     if ! sudo apt-get install -yq \
-        curl wget netcat \
+        curl wget netcat net-tools \
         highlight \
         jq \
         zsh \

@@ -37,6 +37,7 @@
 
 - create:
     - ~/.vim/undo-history
+    - ~/.local/bin
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
