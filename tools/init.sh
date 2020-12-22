@@ -13,16 +13,23 @@ function install_apt_package {
 function install_linux {
     if ! sudo apt-get install -yq \
         curl wget netcat net-tools \
-        highlight \
+        highlight tree \
         jq \
         zsh \
         mosh \
         direnv autojump \
-        vim tmux
+        vim tmux \
+	openjdk-14-jdk
     then
         echo "Package install failed, please run apt update then prereqs_linux.sh"
     fi
 
+    # finish java install
+    if ! grep JAVA_HOME /etc/enviornment
+    then
+    	jhome=$(ls -al /etc/alternatives/java | awk '{print $11}')
+    	echo "export JAVA_HOME=${jhome/\/bin\/java/}" | sudo tee -a /etc/environment 
+    fi
 }
 
 function install_brew {
@@ -53,6 +60,7 @@ function install_osx {
     install_brew tmux
     install_brew autojump
     install_brew mosh
+    install_brew tree
 }
 
  
