@@ -112,10 +112,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-cd ~/
-source .shell/all.sh
-
-
+source ~/.shell/all.sh
 
 if [ -f ~/.bash_local ]
 then

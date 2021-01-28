@@ -17,7 +17,7 @@ function install_linux {
         jq \
         zsh \
         mosh \
-        direnv autojump \
+        direnv autojump tig \
         vim tmux \
 	openjdk-14-jdk
     then
@@ -61,6 +61,7 @@ function install_osx {
     install_brew autojump
     install_brew mosh
     install_brew tree
+    install_brew tig
 }
 
  
