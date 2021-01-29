@@ -10,6 +10,14 @@ function install_apt_package {
 
 }
 
+
+function install_common  {
+
+	# NVM
+	@echo Installing NVM...
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+
+}
 function install_linux {
     if ! sudo apt-get install -yq \
         curl wget netcat net-tools \
@@ -30,6 +38,8 @@ function install_linux {
     	jhome=$(ls -al /etc/alternatives/java | awk '{print $11}')
     	echo "export JAVA_HOME=${jhome/\/bin\/java/}" | sudo tee -a /etc/environment 
     fi
+
+    install_common
 }
 
 function install_brew {
@@ -41,7 +51,6 @@ function install_brew {
         echo "$1 already installed"
     fi
 }
-
 
 function install_osx {
     # brew
@@ -62,6 +71,8 @@ function install_osx {
     install_brew mosh
     install_brew tree
     install_brew tig
+
+    install_common
 }
 
  
