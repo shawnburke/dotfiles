@@ -18,13 +18,4 @@ if [ "$?" = 2 ]; then
 fi
 
 # Load identities
-ssh-add -l &>/dev/null
-if [ "$?" = 1 ]; then
-
-  if [ -d ~/.ssh ]
-  then 
-     # Get all keys that start with id_ in .ssh dir, add to ssh-add. ssh-add outputs to stderr, so we want to suppress
-     # that or zsh/powershell will get mad.  Standard output is like "Identity added..."
-     find ~/.ssh -maxdepth 1 -name "id_*" -type f ! -name "*.*" | xargs -I S ssh-add -A S 2>/dev/null 
-  fi
-fi
+ssh-add
