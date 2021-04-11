@@ -21,7 +21,7 @@ function install_common  {
 function install_linux {
     if ! sudo apt-get install -yq \
         curl wget netcat net-tools \
-        highlight tree \
+        highlight tree silversearcher-ag \
         jq \
         zsh \
         mosh \
@@ -71,7 +71,7 @@ function install_osx {
     install_brew mosh
     install_brew tree
     install_brew tig
-
+    install_brew the_silver_searcher
     install_common
 }
 

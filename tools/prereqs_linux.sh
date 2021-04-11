@@ -3,6 +3,7 @@
 packages=("git" "python")
 
 
+export DEBIAN_FRONTEND="noninteractive"
 
 if ! which sudo >/dev/null
 then
