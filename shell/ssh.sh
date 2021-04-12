@@ -18,4 +18,4 @@ if [ "$?" = 2 ]; then
 fi
 
 # Load identities
-ssh-add
+ssh-add -l 2>&1 >/dev/null
