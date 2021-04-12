@@ -9,7 +9,7 @@ if [ "$?" = 2 ]; then
     test -r ~/.ssh-agent && \
         eval "$(<~/.ssh-agent)" >/dev/null
 
-    ssh-add -l &>/dev/null
+    ssh-add -l 2>&1 >/dev/null
     if [ "$?" = 2 ]; then
         # Start agent and store agent connection info.
         (umask 066; ssh-agent > ~/.ssh-agent)
