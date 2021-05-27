@@ -26,7 +26,7 @@ function install_linux {
         zsh \
         mosh \
         direnv autojump tig \
-        vim tmux \
+        vim tmux neovim \
 	openjdk-14-jdk
     then
         echo "Package install failed, please run apt update then prereqs_linux.sh"
@@ -71,6 +71,7 @@ function install_osx {
     install_brew mosh
     install_brew tree
     install_brew tig
+    install_brew neovim
     install_brew the_silver_searcher
     install_common
 }
@@ -94,6 +95,11 @@ esac
  # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+
+# Install Vim/Neovim plugin helper
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 
 echo "Init complete, now exit shell and run source ~/dotfiles/install"
