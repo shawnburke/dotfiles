@@ -19,7 +19,7 @@ function init_tools {
 function zsh_theme {
 
     export ZSH_THEME=$1
-    src # depends on zsh_reload
+    omz reload 
     
 
 }
