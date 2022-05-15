@@ -24,6 +24,7 @@ function install_linux {
 	 echo "Package install failed, please run apt update then prereqs_linux.sh"
     fi
 
+    install_apt_package apt-utils
     install_apt_package curl
     install_apt_package wget
     install_apt_package netcat
