@@ -6,7 +6,7 @@ then
     DIR=~/.shell
 fi
 
-os=$(uname -s)
+export os=$(uname -s)
 source $DIR/env.sh
 source $DIR/alias.sh
 source $DIR/functions.sh

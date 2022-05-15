@@ -19,7 +19,7 @@ function install_common  {
 
 }
 function install_linux {
-    if ! sudo apt-get install -yq \
+    if ! sudo apt-get update && sudo apt-get install -yq \
         curl wget netcat net-tools \
         highlight tree silversearcher-ag \
         jq \
