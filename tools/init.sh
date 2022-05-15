@@ -3,7 +3,7 @@ function install_apt_package {
     if ! dpkg -l $1 2&>1 >/dev/null
     then
         echo "Installing $1..."
-        sudo apt-get install -yq $package >/dev/null
+        sudo apt-get install -yq $1 >/dev/null
     else
         echo "$1 already installed"
     fi
@@ -19,20 +19,30 @@ function install_common  {
 
 }
 function install_linux {
-    if ! sudo apt-get update && sudo apt-get install -yq \
-        curl wget netcat net-tools \
-        highlight tree silversearcher-ag \
-        jq \
-        zsh \
-        mosh \
-        direnv autojump tig \
-        vim tmux neovim \
-	openjdk-14-jdk
+    if ! sudo apt-get update
     then
-        echo "Package install failed, please run apt update then prereqs_linux.sh"
+	 echo "Package install failed, please run apt update then prereqs_linux.sh"
     fi
 
-    # finish java install
+    install_apt_package curl
+    install_apt_package wget
+    install_apt_package netcat
+    install_apt_package net-tools
+    install_apt_package highlight
+    install_apt_package tree
+    install_apt_package silversearcher-ag
+    install_apt_package jq
+    install_apt_package mosh
+    install_apt_package zsh
+    install_apt_package direnv
+    install_apt_package autojump
+    install_apt_package tig
+    install_apt_package vim
+    install_apt_package neovim
+    install_apt_package tmux
+    install_apt_package openjdk-14-jdk
+
+# finish java install
     if ! grep JAVA_HOME /etc/enviornment
     then
     	jhome=$(ls -al /etc/alternatives/java | awk '{print $11}')
