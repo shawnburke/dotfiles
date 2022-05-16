@@ -23,7 +23,7 @@ function install_linux {
     then
 	 echo "Package install failed, please run apt update then prereqs_linux.sh"
     fi
-
+    export DEBIAN_FRONTEND=noninteractive 
     install_apt_package apt-utils
     install_apt_package curl
     install_apt_package wget
@@ -113,4 +113,4 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 
-echo "Init complete, now exit shell and run source ~/dotfiles/install"
+echo "Init complete, now exit shell and run ~/dotfiles/install"
