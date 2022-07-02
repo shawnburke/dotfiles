@@ -31,3 +31,6 @@ listening() {
         echo "Usage: listening [pattern]"
     fi
 }
+
+    # src # depends on zsh_reload
+
