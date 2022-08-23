@@ -13,8 +13,8 @@ function finish_it {
         if [ -f $pidfile ]
         then
                 pid=$(cat $pidfile)
-                rm $pidfile
-                echo "Killing ssh..."
+                rm -f $pidfile
+                echo "Cleaning up"
                 kill $pid
         fi
 	exit
@@ -28,7 +28,6 @@ function start_tunnel {
 		 echo "Existing tunnel detected"
   fi
 
-  trap finish_it SIGINT SIGTERM
   while true
   do
     if ! check_port ${port}
@@ -46,4 +45,5 @@ function start_tunnel {
   done
 }
 
+trap finish_it EXIT
 start_tunnel
