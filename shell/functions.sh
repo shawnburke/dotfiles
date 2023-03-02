@@ -15,6 +15,24 @@ function init_tools {
     . $DIR/../tools/init.sh
 }
 
+function export_env() { 
+	if [ ! -f $1 ]
+	then
+		echo "$1 not found";
+		return 1;
+	fi
+	cat $1 | while read p; 
+	do 
+	  result=$(echo "$p" | grep -E "^[ \t]*[^#]+=.*$")
+	  if [ $? != 0 ]
+	  then
+		  continue;
+	  fi
+	  eval "export $p"; 
+	  v=$(echo $p | grep -oE "^.*?=.{2}")
+	  echo "exporting $v...";
+	done 
+}
 
 function zsh_theme {
 
