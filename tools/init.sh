@@ -42,6 +42,7 @@ function install_linux {
     install_apt_package neovim
     install_apt_package tmux
     install_apt_package openjdk-14-jdk
+    install_apt-package fonts-powerline
 
 # finish java install
     if ! grep JAVA_HOME /etc/enviornment
