@@ -54,7 +54,10 @@ function install_linux {
     install_common
 }
 
+
+
 function install_brew {
+
     if ! brew list $1 2&>1 > /dev/null
     then
         echo "Installing $1"
@@ -67,11 +70,36 @@ function install_brew {
 function install_osx {
     # brew
     # tools above
+
+
+    # find brew
     if ! which brew >/dev/null
-    then 
-        echo "Please install brew, then run again."
-        return
+    then
+	# first see if brew is installed, then if not, install it
+	if [ ! -x /opt/homebrew/bin/brew ]
+	then 
+	  echo "Homebrew not found, installing"
+	  export NONINTERACTIVE=1
+	  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	fi
+
+	# check again, make sure it worked
+	if [ ! -x  /opt/homebrew/bin/brew ]
+	then
+		echo "Brew  not installed, please install from https://brew.sh/ then rerun"
+		return
+	fi
+	
+	# Ok, add it to env local and the path for the remainder of the script
+	echo "Found brew but is not on path, adding to .env_local"
+	if ! grep -q "/opt/homebrew/bin" ~/.env_local
+	then
+		echo 'export PATH=$PATH:/opt/homebrew/bin' >> ~/.env_local
+	fi
+	export PATH=$PATH:/opt/homebrew/bin
     fi
+
+
 
     install_brew wget
     install_brew highlight
