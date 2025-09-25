@@ -7,9 +7,10 @@ then
 fi
 
 export os=$(uname -s)
+
+source $DIR/functions.sh
 source $DIR/env.sh
 source $DIR/alias.sh
-source $DIR/functions.sh
 source $DIR/ssh.sh
 source $DIR/tools.sh
 
