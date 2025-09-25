@@ -113,6 +113,7 @@ function install_osx {
     install_brew tig
     install_brew neovim
     install_brew the_silver_searcher
+    install_brew maccy
     install_common
 }
 
