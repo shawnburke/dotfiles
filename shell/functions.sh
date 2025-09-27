@@ -111,7 +111,7 @@ listening() {
         echo ""
         
         # Extract PIDs (second column) - works on both macOS and Linux
-        pids=$(echo "$lsof_output" | awk 'NR>1 {print $2}' | sort -un)
+        pids=$(echo "$lsof_output" | awk '{print $2}' | sort -un)
         
         if [ -z "$pids" ]; then
             echo "No PIDs found to kill"
