@@ -65,7 +65,7 @@ function setup_docker_test {
   }
 
   echo "Running test"
-  if ! docker exec -it $container_name /root/dotfiles/test.sh run
+  if ! docker exec -i $container_name /root/dotfiles/test.sh run
   then
     cleanup "### ❌❌❌ FAIL ❌❌❌ $image_name"
     exit 1
