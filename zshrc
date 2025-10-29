@@ -54,10 +54,9 @@ ZSH_THEME=${ZSH_THEME:-"powerlevel10k/powerlevel10k"}
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Disable marking untracked files under VCS as dirty. This makes repository
+# status check for large repositories much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -124,12 +123,18 @@ fi
 
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/path.zsh.inc'; fi
+# Lazy-load Google Cloud SDK (only load when gcloud command is used)
+_gcloud_lazy_load() {
+  unset -f gcloud
+  if [ -f '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/path.zsh.inc' ]; then
+    . '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/path.zsh.inc'
+  fi
+  if [ -f '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/completion.zsh.inc' ]; then
+    . '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/completion.zsh.inc'
+  fi
+}
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/shawn/cortex/brain-backend/scripts/local/gcloud/.gcloud-cli/google-cloud-sdk/completion.zsh.inc'; fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+gcloud() {
+  _gcloud_lazy_load
+  gcloud "$@"
+}
