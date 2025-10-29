@@ -27,7 +27,7 @@ function install_linux {
     install_apt_package apt-utils
     install_apt_package curl
     install_apt_package wget
-    install_apt_package netcat
+    install_apt_package netcat-openbsd
     install_apt_package net-tools
     install_apt_package highlight
     install_apt_package tree
@@ -42,7 +42,7 @@ function install_linux {
     install_apt_package neovim
     install_apt_package tmux
     install_apt_package openjdk-14-jdk
-    install_apt-package fonts-powerline
+    install_apt_package fonts-powerline
 
 # finish java install
     if ! grep JAVA_HOME /etc/enviornment
