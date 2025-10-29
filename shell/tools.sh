@@ -5,7 +5,9 @@ function tools_linux {
 }
 
 function tools_osx {
-     [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+     # Cache brew prefix to avoid repeated subprocess calls (50-200ms each)
+     local BREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
+     [[ -s "$BREW_PREFIX/etc/autojump.sh" ]] && . "$BREW_PREFIX/etc/autojump.sh"
 }
 
 case $os in
