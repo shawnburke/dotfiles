@@ -1,6 +1,6 @@
 
 function install_apt_package {
-    if ! dpkg -l $1 2&>1 >/dev/null
+    if ! dpkg -l $1 2>&1 >/dev/null
     then
         echo "Installing $1..."
         sudo apt-get install -yq $1 >/dev/null
@@ -14,7 +14,7 @@ function install_apt_package {
 function install_common  {
 
 	# NVM
-	@echo Installing NVM...
+	echo Installing NVM...
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 }
@@ -27,7 +27,7 @@ function install_linux {
     install_apt_package apt-utils
     install_apt_package curl
     install_apt_package wget
-    install_apt_package netcat
+    install_apt_package netcat-openbsd
     install_apt_package net-tools
     install_apt_package highlight
     install_apt_package tree
@@ -41,14 +41,14 @@ function install_linux {
     install_apt_package vim
     install_apt_package neovim
     install_apt_package tmux
-    install_apt_package openjdk-14-jdk
-    install_apt-package fonts-powerline
+    install_apt_package openjdk-17-jdk
+    install_apt_package fonts-powerline
 
 # finish java install
-    if ! grep JAVA_HOME /etc/enviornment
+    if ! grep JAVA_HOME /etc/environment
     then
     	jhome=$(ls -al /etc/alternatives/java | awk '{print $11}')
-    	echo "export JAVA_HOME=${jhome/\/bin\/java/}" | sudo tee -a /etc/environment 
+    	echo "export JAVA_HOME=${jhome/\/bin\/java/}" | sudo tee -a /etc/environment
     fi
 
     install_common
@@ -58,7 +58,7 @@ function install_linux {
 
 function install_brew {
 
-    if ! brew list $1 2&>1 > /dev/null
+    if ! brew list $1 2>&1 > /dev/null
     then
         echo "Installing $1"
         brew install $1

@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Set up environment
+      run: |
+        # Make test script executable
+        chmod +x test.sh
+
+    - name: Run tests
+      run: |
+        # Set VOLUME_DIR to current directory (equivalent to TRAVIS_BUILD_DIR)
+        export VOLUME_DIR=$GITHUB_WORKSPACE
+        ./test.sh
+
+    - name: Test summary
+      if: success()
+      run: echo "✅ All tests passed successfully!"

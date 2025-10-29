@@ -33,7 +33,7 @@ function setup_docker_test {
   # Start a docker instance, mapping in this directory
   DIR=${VOLUME_DIR:-$HOME/dotfiles}
 
-  if ! docker run -d -v $DIR:/root/dotfiles --name $container_name -it $image_name sleep 1d  
+  if ! docker run -d -v $DIR:/root/dotfiles --name $container_name -i $image_name sleep 1d  
   then
     echo "Failed to start docker container"
     exit 1
@@ -65,7 +65,7 @@ function setup_docker_test {
   }
 
   echo "Running test"
-  if ! docker exec -it $container_name /root/dotfiles/test.sh run
+  if ! docker exec -i $container_name /root/dotfiles/test.sh run
   then
     cleanup "### ❌❌❌ FAIL ❌❌❌ $image_name"
     exit 1
